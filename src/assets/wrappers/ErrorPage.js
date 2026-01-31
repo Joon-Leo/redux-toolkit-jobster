@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.main`
   text-align: center;
@@ -6,7 +6,7 @@ const Wrapper = styled.main`
     width: 90vw;
     max-width: 600px;
     display: block;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
   display: flex;
   align-items: center;
