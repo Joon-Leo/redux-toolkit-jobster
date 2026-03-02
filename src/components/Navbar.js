@@ -6,24 +6,26 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../features/sidebar/sidebarSlice";
 import { logoutUser } from "../features/user/userSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
-  const toggle = () => {
-    dispatch(toggleSidebar());
-  };
-
-  const logout = () => {
+  const handleLogout = () => {
     dispatch(logoutUser());
+    toast.success("Logging out...");
   };
 
   return (
     <Wrapper>
       <div className="nav-center">
-        <button type="button" className="toggle-btn" onClick={toggle}>
+        <button
+          type="button"
+          className="toggle-btn"
+          onClick={() => dispatch(toggleSidebar())}
+        >
           <FaAlignLeft />
         </button>
         <div>
@@ -41,7 +43,11 @@ const Navbar = () => {
             <FaCaretDown />
           </button>
           <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
-            <button type="button" className="dropdown-btn" onClick={logout}>
+            <button
+              type="button"
+              className="dropdown-btn"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </div>
