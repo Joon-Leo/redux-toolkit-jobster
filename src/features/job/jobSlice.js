@@ -23,7 +23,7 @@ export const createJob = createAsyncThunk(
     try {
       const resp = await customFetch.post("/jobs", job, {
         headers: {
-          Authorization: `${thunkAPI.getState().user.user.token}`,
+          Authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       });
       thunkAPI.dispatch(clearValues());
