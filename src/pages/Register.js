@@ -88,6 +88,21 @@ const Register = () => {
         <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "loading..." : "submit"}
         </button>
+        <button
+          type="button"
+          className="btn btn-block btn-hipster"
+          disabled={isLoading}
+          onClick={() =>
+            dispatch(
+              loginUser({
+                email: "testUser@test.com",
+                password: "secret",
+              }),
+            )
+          }
+        >
+          {isLoading ? "loading..." : "demo"}
+        </button>
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
           <button
@@ -97,21 +112,6 @@ const Register = () => {
             disabled={isLoading}
           >
             {values.isMember ? "Register" : "Login"}
-          </button>
-          <button
-            type="button"
-            className="btn btn-block btn-hipster"
-            disabled={isLoading}
-            onClick={() =>
-              dispatch(
-                loginUser({
-                  email: "testUser@test.com",
-                  password: "secret",
-                }),
-              )
-            }
-          >
-            {isLoading ? "loading..." : "demo"}
           </button>
         </p>
       </form>
