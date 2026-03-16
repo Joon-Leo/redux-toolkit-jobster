@@ -3,7 +3,7 @@ import customFetch from "../../utils/axios";
 import { logoutUser } from "../user/userSlice";
 import { toast } from "react-toastify";
 
-const initialFilters = {
+const initialFiltersState = {
   search: "",
   searchStatus: "all",
   searchType: "all",
@@ -19,7 +19,7 @@ const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
-  ...initialFilters,
+  ...initialFiltersState,
 };
 
 export const getAllJobs = createAsyncThunk(
@@ -61,6 +61,13 @@ const allJobSlice = createSlice({
     hideLoading: (state) => {
       state.isLoading = false;
     },
+    handleChange: (state, { payload: { name, value } }) => {
+      //state.page = 1;
+      state[name] = value;
+    },
+    clearFilters: (state) => {
+      return { ...state, ...initialFiltersState };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,5 +99,6 @@ const allJobSlice = createSlice({
   },
 });
 
-export const { showLoading, hideLoading } = allJobSlice.actions;
+export const { showLoading, hideLoading, handleChange, clearFilters } =
+  allJobSlice.actions;
 export default allJobSlice.reducer;
