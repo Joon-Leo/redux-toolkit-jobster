@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../features/sidebar/sidebarSlice";
-import { logoutUser } from "../features/user/userSlice";
+import { clearStore } from "../features/user/userSlice";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(clearStore());
     toast.success("Logging out...");
   };
 
